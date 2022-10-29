@@ -80,11 +80,46 @@ void inorder(Node* root){
     //right call
     inorder(root->right);
 }
+
+void buildingFromLevelOrder(Node* &root){
+    queue<Node*> q;
+    cout<<"enter data "<<endl;
+    int data ;
+    cin>> data;
+    root = new Node(data);
+    q.push(root);
+
+    while(!q.empty()){
+        Node* temp = q.front();
+        q.pop();
+        
+        cout<<"enter data for left of "<<temp->data<<endl;
+        int leftData;
+        cin>>leftData;
+        if(leftData!=-1){
+            temp->left = new Node(leftData);
+            q.push(temp->left);
+        }
+        cout<<"enter data for right of "<<temp->data<<endl;
+        int rightData;
+        cin>>rightData;
+        if(rightData!=-1){
+            temp->right = new Node(rightData);
+            q.push(temp->right);
+        }
+
+
+    }
+
+}
 int main(){
     Node* root = NULL;
     //building tree
+    buildingFromLevelOrder(root);
+    levelOrderTraversal(root);
 
-   
+
+   /*
     root = buildTree(root);
 
     // 1 3 7 -1 -1 11 -1 -1  5 17 -1 -1 -1 
@@ -95,6 +130,7 @@ int main(){
 
     cout<<"printing the inorder traversal"<<endl;
     inorder(root);
+    */
 
     return 0;
 }
