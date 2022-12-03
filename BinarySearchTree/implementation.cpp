@@ -82,6 +82,30 @@ bool searchInBST(Node* root,int x){
         return searchInBST(root->right,x);
     }
 }
+int minVal(Node* root){
+    if(root == NULL){
+        return -1;
+    }
+
+    Node* temp = root;
+    while(temp->left != NULL){
+        temp = temp->left;
+    }
+
+    return temp->data;
+}
+int maxVal(Node* root){
+    if(root == NULL){
+        return -1;
+    }
+
+    Node* temp = root;
+    while(temp->right != NULL){
+        temp = temp->right;
+    }
+
+    return temp->data;
+}
 int main(){
 
     Node* root = NULL;
@@ -96,6 +120,9 @@ int main(){
 
 
     cout<<searchInBST(root,21)<<endl;
+
+    cout<<"minimum val in the BST is "<<minVal(root)<<endl;
+    cout<<"maximum val in the BST is "<<maxVal(root)<<endl;
 
     cout<<endl;
 
