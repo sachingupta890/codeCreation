@@ -97,6 +97,8 @@ int main(){
 
     cout<<searchInBST(root,21)<<endl;
 
+    cout<<endl;
+
 
     return 0;
 }
