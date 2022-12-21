@@ -82,32 +82,77 @@ bool searchInBST(Node* root,int x){
         return searchInBST(root->right,x);
     }
 }
-int minVal(Node* root){
-    if(root == NULL){
-        return -1;
-    }
+Node* minVal(Node* root){
+  
 
     Node* temp = root;
     while(temp->left != NULL){
         temp = temp->left;
     }
 
-    return temp->data;
+    return temp;
 }
-int maxVal(Node* root){
-    if(root == NULL){
-        return -1;
-    }
+Node* maxVal(Node* root){
 
     Node* temp = root;
     while(temp->right != NULL){
         temp = temp->right;
     }
 
-    return temp->data;
+    return temp;
 }
 
+Node* deletion(Node* root,int val){
+    
+    if(root == NULL){
+        return root;
+    }
 
+    if(root->data==val){
+
+
+        //1 No child 
+        if(root -> left == NULL && root->right == NULL){
+            delete root;
+            return NULL;
+        }
+        // 1 child 
+
+        //only left child 
+        if(root ->left != NULL && root->right == NULL){
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        if(root -> left == NULL && root->right !=NULL){
+            Node* temp = root -> right ;
+            delete root;
+            return temp;
+        }
+
+        //2 child 
+        if(root->left != NULL && root->right !=NULL){
+            //taking minimum from right
+            int mini;
+
+            mini  = minVal(root->right) -> data;
+            root->data = mini;
+            root->right = deletion(root->right,mini);
+            return root;
+        }
+
+    }
+    else if(root->data > val){
+        root->left = deletion(root->left,val);
+        return root;
+    }
+    else{
+        root->right = deletion(root->right,val);
+        return root;
+    }
+
+    
+}
 
 int main(){
 
@@ -124,10 +169,21 @@ int main(){
 
     cout<<searchInBST(root,21)<<endl;
 
-    cout<<"minimum val in the BST is "<<minVal(root)<<endl;
-    cout<<"maximum val in the BST is "<<maxVal(root)<<endl;
+    cout<<"minimum val in the BST is "<<minVal(root)->data<<endl;
+    cout<<"maximum val in the BST is "<<maxVal(root)->data<<endl;
 
     cout<<endl;
+
+
+    //deletion 
+
+    deletion(root,90);
+    
+    cout<<"printing the tree "<<endl;
+    levelOrderTraversal(root);
+    cout<<endl;
+
+
 
 
     return 0;
