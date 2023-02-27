@@ -115,22 +115,22 @@ void buildingFromLevelOrder(Node* &root){
 int main(){
     Node* root = NULL;
     //building tree
-    buildingFromLevelOrder(root);
-    levelOrderTraversal(root);
+   // buildingFromLevelOrder(root);
+   // levelOrderTraversal(root);
 
 
-   /*
+   
     root = buildTree(root);
 
     // 1 3 7 -1 -1 11 -1 -1  5 17 -1 -1 -1 
     cout<<"printing the binary tree "<<endl;
 
-    levelOrderTraversal(root);
+   levelOrderTraversal(root);
 
 
     cout<<"printing the inorder traversal"<<endl;
     inorder(root);
-    */
+    //*/
 
     return 0;
 }

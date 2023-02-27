@@ -99,8 +99,8 @@ int main(){
 
     
     unordered_map<int,bool> visited;
-    bool flag = 0;
-     for(int i = 1; i<=n; i++){
+    bool flag = 0;  
+     for(int i = 0; i<n; i++){
         if(!visited[i]){
             bool ans = detectCycleDFS(i,-1,visited);
             if(ans){

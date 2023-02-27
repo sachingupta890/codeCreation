@@ -203,11 +203,7 @@ int main()
 	root = insert(root, 3);
 	root = insert(root, 17);
 	root = insert(root, 10);
-	root = insert(root, 14);
-    root = insert(root, 90);
-    root = insert(root, 2);
-    root = insert(root, 1);
-    root = insert(root, 5);
+
 	
 	/* The constructed AVL Tree would be
 				30
